@@ -2,7 +2,7 @@ name: Docs
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, release-0.6.3 ]
     tags:
       - '*'
 
@@ -15,8 +15,9 @@ jobs:
         python: [3.9]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
+          ref: master
           lfs: false
 
       - name: Install OS dependencies
@@ -24,7 +25,7 @@ jobs:
           sudo apt-get install doxygen
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
 
@@ -41,8 +42,22 @@ jobs:
         run: |
           cd docs && make HTMLCOPYDIR=../site/docs html && touch ../site/docs/.nojekyll
 
+      # Build documentation on the release-0.6.3 branch in a subfolder
+      # ------------------------------------------------------------
+      - uses: actions/checkout@v4
+        with:
+          ref: release-0.6.3
+          path: release-0.6.3
+          clean: false
+
+      - name: Build docs on 0.6.3
+        run: |
+          rm -rf release-0.6.3/.git
+          cd release-0.6.3/docs && make HTMLCOPYDIR=../../site/docs/release-0.6.3 html
+      # ------------------------------------------------------------
+
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@v4.7.2
         with:
           branch: gh-pages
           folder: site

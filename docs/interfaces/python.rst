@@ -66,9 +66,9 @@ The :code:`results` object contains the primal solution :code:`x`, the dual solu
 +-----------------------+------------------------------------------------+
 | :code:`obj_val`       | Objective value                                |
 +-----------------------+------------------------------------------------+
-| :code:`pri_res`       | Primal residual                                |
+| :code:`prim_res`      | Primal residual                                |
 +-----------------------+------------------------------------------------+
-| :code:`dua_res`       | Dual residual                                  |
+| :code:`dual_res`      | Dual residual                                  |
 +-----------------------+------------------------------------------------+
 | :code:`setup_time`    | Setup time                                     |
 +-----------------------+------------------------------------------------+
@@ -146,7 +146,7 @@ Matrix :code:`A` can be changed in the same way. You can also change both matric
 
 .. code:: python
 
-    m.update(Px=Px_new, Px_idx=Px_new_idx, Ax=Ax_new, Ax=Ax_new_idx)
+    m.update(Px=Px_new, Px_idx=Px_new_idx, Ax=Ax_new, Ax_idx=Ax_new_idx)
 
 
 Update settings

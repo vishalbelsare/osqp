@@ -8,7 +8,7 @@
 ![PyPI - downloads](https://img.shields.io/pypi/dm/osqp.svg?label=Pypi%20downloads)
 ![Conda - downloads](https://img.shields.io/conda/dn/conda-forge/osqp.svg?label=Conda%20downloads)
 
-[**Join our forum on Discourse**](https://osqp.discourse.group) for any questions related to the solver!
+[**Visit our GitHub Discussions page**](https://github.com/orgs/osqp/discussions) for any questions related to the solver!
 
 **The documentation** is available at [**osqp.org**](https://osqp.org/)
 
@@ -21,8 +21,6 @@ subject to      l <= A x <= u
 
 where `x in R^n` is the optimization variable. The objective function is defined by a positive semidefinite matrix `P in S^n_+` and vector `q in R^n`. The linear constraints are defined by matrix `A in R^{m x n}` and vectors `l` and `u` so that `l_i in R U {-inf}` and `u_i in R U {+inf}` for all `i in 1,...,m`.
 
-
-The latest version is `0.6.2`.
 
 ## Citing OSQP
 
@@ -41,4 +39,3 @@ Please report any issues via the [Github issue tracker](https://github.com/osqp/
 
 ## Numerical benchmarks
 Numerical benchmarks against other solvers are available [here](https://github.com/osqp/osqp_benchmarks).
-
